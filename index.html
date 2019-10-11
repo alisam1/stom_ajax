@@ -30,6 +30,7 @@
           <input type="text" id="phone" name="phone" placeholder="Телефон" value="">
 
              <select name="color" id="color" class="select">
+                <option name= "choise" value="0">Выбрать</option>
                 <option name = "people" value="1">Слушатель</option>
                 <option name = "org" value="2">Лекционный центр </option>
             </select>
@@ -41,7 +42,7 @@
               </div>
 
               <div id = "org" class = "form__select">
-                <input type="text" id="full_name" name="full_name" placeholder="Название центра" value="">
+                <input type="text" id="center_name" name="center_name" placeholder="Название центра" value="">
                 <input type="text" id="inn" name="inn" placeholder="ИНН" value="">
                 <input type="text" id="kpp" name="kpp" placeholder="КПП" value="">
                 <input type="text" id="ogrn" name="ogrn" placeholder="ОГРН" value="">
@@ -71,10 +72,8 @@ $('#color').change(function(){
 
   $("#formx").on("submit",	function () {
       var msg   = $('#formx').serialize();
-      $('#color').change(function(){
-        var msg   = $('#formx').serialize();
           if($("#color").val() == '1'){
-            var msg   = $('#formx').serialize();
+             $("#org input").remove();
               $.ajax({
                   type: 'POST',
                   url: 'res.php',
@@ -84,7 +83,7 @@ $('#color').change(function(){
                   }
               });
           } else if ($("#color").val() == '2'){
-            var msg   = $('#formx').serialize();
+            $("#people input").remove();
              $.ajax({
                   type: 'POST',
                   url: 'res.php',
@@ -95,7 +94,6 @@ $('#color').change(function(){
               });
 
           }
-      });
   	});
 	
 </script>
