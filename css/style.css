@@ -19,7 +19,7 @@
 	flex-direction: column;
 }
 
-#full_form, #people
+#full_form
 {
 	display: flex;
 	flex-direction: column;
@@ -40,6 +40,11 @@
 	font-size: 14px;
 	color: #2C78F6;
 
+}
+
+#org__form
+{
+	display: none;
 }
 
 #people input
@@ -70,4 +75,14 @@
 	font-size: 14px;
 	color: #2C78F6;
 
+}
+
+#people
+{
+	display: none;
+}
+
+#org
+{
+	display: none;
 }
