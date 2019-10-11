@@ -22,7 +22,7 @@
   
     <div class="container">
 
-		    <form method="POST" class="main_form" id="formx" action="javascript:void(null);">
+		    <div id="formx" method="POST">
 
           <input type="text" id="login" name="login" placeholder="Логин" value="">
           <input type="text" id="password" name="password" placeholder="Пароль" value="">
@@ -49,9 +49,8 @@
                 <input type="text" id="jur_address" name="jur_address" placeholder="Юридический адрес" value="">
                 <input type="text" id="fiz_address " name="fiz_address" placeholder="Фактический адрес" value="">
             </div>
-
-           <input value="Send" type="submit">
-    		</form>
+            <input id="form__button" value="Send" type="submit">
+          </div>
 
   		<div id="results"></div>
   </div>
@@ -60,44 +59,25 @@
  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script>
 
-$('#color').change(function(){
-    if($("#color").val() == '1'){
-       $("#people").show();
-       $("#org").hide();
-    } else if ($("#color").val() == '2'){
-      $("#org").show();
-      $("#people").hide();
-    }
-});
-
-  $("#formx").on("submit",	function () {
-      var msg   = $('#formx').serialize();
-          if($("#color").val() == '1'){
-             $("#org input").remove();
-              $.ajax({
-                  type: 'POST',
-                  url: 'res.php',
-                  data: msg,
-                  success: function(data){
-                      $('#results').html(data);
-                  }
-              });
-          } else if ($("#color").val() == '2'){
-            $("#people input").remove();
-             $.ajax({
-                  type: 'POST',
-                  url: 'res.php',
-                  data: msg,
-                  success: function(data){
-                      $('#results').html(data);
-                  }
-              });
-
-          }
-  	});
+    
+  $(document).ready(function () {
+    $("#formx input").submit(function () {
+    $.ajax({
+      url: 'res.php',
+      type: 'post',
+      data: $("#formx input").val(),
+      dataType: 'json',
+      success: function (json) {
+       $("#results").html(data); 
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+        });
+      });
+  
+  });
 	
 </script>
-
-
 </body>
 </html>
