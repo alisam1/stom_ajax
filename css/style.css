@@ -100,7 +100,7 @@
 	display: none;
 }
 
-#formx input[type="submit"]
+#form__button[type="submit"]
 {
 	width: 300px;
 	text-align: center;

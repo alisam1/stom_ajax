@@ -22,7 +22,7 @@
   
     <div class="container">
 
-		    <div id="formx" method="POST">
+		    <div id="formx">
 
           <input type="text" id="login" name="login" placeholder="Логин" value="">
           <input type="text" id="password" name="password" placeholder="Пароль" value="">
@@ -49,7 +49,7 @@
                 <input type="text" id="jur_address" name="jur_address" placeholder="Юридический адрес" value="">
                 <input type="text" id="fiz_address " name="fiz_address" placeholder="Фактический адрес" value="">
             </div>
-            <input id="form__button" value="Send" type="submit">
+            <button id="form__button" type="button">Отправить</button>
           </div>
 
   		<div id="results"></div>
@@ -61,21 +61,17 @@
 
     
   $(document).ready(function () {
-    $("#formx input").submit(function () {
+    $("#form__button").click(function(){
+    var msg = $('#formx input').val();
     $.ajax({
       url: 'res.php',
-      type: 'post',
-      data: $("#formx input").val(),
-      dataType: 'json',
-      success: function (json) {
+      type: 'POST',
+      data: msg, 
+      success: function () {
        $("#results").html(data); 
       },
-      error: function (xhr, ajaxOptions, thrownError) {
-        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-      }
         });
       });
-  
   });
 	
 </script>
