@@ -58,18 +58,28 @@
 
  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script>
-
+  $('#color').change(function () {
+    if ($("#color").val() == '1') {
+      $("#people").show();
+      $("#org").hide();
+    } else if ($("#color").val() == '2') {
+      $("#org").show();
+      $("#people").hide();
+    }
+  });
     
   $(document).ready(function () {
     $("#form__button").click(function(){
-    var msg = $('#formx input').val();
+    var msg = $('#formx input:text').each(function () {
+        $(this).val();
+      });
     $.ajax({
       url: 'res.php',
       type: 'POST',
       data: msg, 
-      success: function () {
-       $("#results").html(data); 
-      },
+      success: function (data) {
+        $("#results").html(data);
+      }
         });
       });
   });
