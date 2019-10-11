@@ -18,9 +18,11 @@
 
 <div id="main">
 
-	<h1 class="form_title">AJAX</h1>
+  <h1 class="form_title">AJAX</h1>
+  
+  <div class="container">
 
-		    <form method="POST" id="formx" action="javascript:void(null);" onsubmit="call()">
+		    <form method="POST" class = "main_form" id="formx" action="javascript:void(null);" onchange="call()">
 
           <input type="text" id="login" name="login" placeholder="Логин" value="">
           <input type="text" id="password" name="password" placeholder="Пароль" value="">
@@ -33,29 +35,25 @@
             </select>
 
               <div  id = "people" class = "form__select">
-
-              <form>
                 <input type="text" id="full_name" name="full_name" placeholder="ФИО" value="">
                 <input type="text" id="worker_position " name="worker_position " placeholder="Должность" value="">
                 <input type="text" id="worker_city" name="worker_city" placeholder="Город" value="">
-                </form>
               </div>
 
               <div id = "org" class = "form__select">
-              <form>
                 <input type="text" id="full_name" name="full_name" placeholder="Название центра" value="">
                 <input type="text" id="inn" name="inn" placeholder="ИНН" value="">
                 <input type="text" id="kpp" name="kpp" placeholder="КПП" value="">
                 <input type="text" id="ogrn" name="ogrn" placeholder="ОГРН" value="">
                 <input type="text" id="jur_address" name="jur_address" placeholder="Юридический адрес" value="">
                 <input type="text" id="fiz_address " name="fiz_address" placeholder="Фактический адрес" value="">
-              </form>
             </div>
 
            <input value="Send" type="submit">
     		</form>
 
-  		<div id="results"></div>
+      <div id="results"></div>
+    </div>
 
 </div>
 
@@ -66,36 +64,15 @@ $('#color').change(function(){
     if($("#color").val() == '1'){
        $("#people").show();
        $("#org").hide();
-        var msg = $('#formx').serialize();
-        $.ajax({
-            type: 'POST',
-            url: 'res.php',
-            data: msg,
-            success: function(data){
-                $('#results').html(data);
-            }
-        });
     } else if ($("#color").val() == '2'){
       $("#org").show();
       $("#people").hide();
-       var msg = $('#formx').serialize();
-       $.ajax({
-            type: 'POST',
-            url: 'res.php',
-            data: msg,
-            success: function(data){
-                $('#results').html(data);
-            }
-        });
-
     }
 });
 
   	function call() {
       var msg   = $('#formx').serialize();
       $('#color').change(function(){
-      $("#people").show();
-       $("#org").hide();
         var msg   = $('#formx').serialize();
           if($("#color").val() == '1'){
             var msg   = $('#formx').serialize();
@@ -108,8 +85,6 @@ $('#color').change(function(){
                   }
               });
           } else if ($("#color").val() == '2'){
-            $("#people").show();
-            $("#org").hide();
             var msg   = $('#formx').serialize();
              $.ajax({
                   type: 'POST',

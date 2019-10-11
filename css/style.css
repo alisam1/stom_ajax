@@ -19,7 +19,7 @@
 	flex-direction: column;
 }
 
-#full_form
+#formx
 {
 	display: flex;
 	flex-direction: column;
@@ -28,7 +28,7 @@
 }
 
 
-#full_form input
+#formx input
 {
 
 	width: 400px;
@@ -42,10 +42,23 @@
 
 }
 
-#org__form
+.form__select
+{
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+#people
 {
 	display: none;
 }
+
+#org
+{
+	display: none;
+}
+
 
 #people input
 
@@ -85,4 +98,18 @@
 #org
 {
 	display: none;
+}
+
+#formx input[type="submit"]
+{
+	width: 300px;
+	text-align: center;
+	margin: 0 auto;
+	border:1px solid #000;
+	border-radius: 3px;
+	background-color: #2C78F6;
+	text-transform: uppercase;
+	color: #fff;
+	cursor: pointer;
+	margin-top: 30px;
 }
