@@ -22,14 +22,14 @@
   
     <div class="container">
 
-		    <div id="formx">
+		    <div id="formx" method="POST">
 
           <input type="text" id="login" name="login" placeholder="Логин" value="">
           <input type="text" id="password" name="password" placeholder="Пароль" value="">
           <input type="text" id="email" name="email " placeholder="Email" value="">
           <input type="text" id="phone" name="phone" placeholder="Телефон" value="">
 
-             <select name="color" id="color" class="select">
+             <select name="form__type" id="form__type" class="select">
                 <option name= "choise" value="0">Выбрать</option>
                 <option name = "people" value="1">Слушатель</option>
                 <option name = "org" value="2">Лекционный центр </option>
@@ -58,31 +58,28 @@
 
  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script>
-  $('#color').change(function () {
-    if ($("#color").val() == '1') {
+  $('#form__type').change(function () {
+    if ($("#form__type").val() == '1') {
       $("#people").show();
       $("#org").hide();
-    } else if ($("#color").val() == '2') {
+    } else if ($("#form__type").val() == '2') {
       $("#org").show();
       $("#people").hide();
     }
   });
-    
+
   $(document).ready(function () {
-    $("#form__button").click(function(){
-    var msg = $('#formx input:text').each(function () {
-        $(this).val();
+     $("#form__button").click(function () {
+       var msg = $('#formx input:text').each(function () {
+         $(this).val();
+       }); 
+
+        $.post("res.php", msg, function (data) { 
+         $("#results").html(data); 
+        })
       });
-    $.ajax({
-      url: 'res.php',
-      type: 'POST',
-      data: msg, 
-      success: function (data) {
-        $("#results").html(data);
-      }
-        });
-      });
-  });
+    });
+      
 	
 </script>
 </body>
